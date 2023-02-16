@@ -20,7 +20,6 @@
 
         .rotate {
             animation-name: rotate;
-            animation-duration: 1.25s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
             width: 250px;
@@ -90,45 +89,34 @@
                 transform: translateY(0);
             }
         }
+
+        .button {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            border: none;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 8px 0 0 0;
+            transition: 0.1s;
+        }
     </style>
 </head>
 
 <body>
-    <h2 style="text-align: center;">HopWeb 旋转 Infinity 分钟</h2>
+    <h2 style="text-align: center;margin: 32px 0;" id="title"></h2>
     <div class="div">
-        <img src="favicon.png" class="rotate">
+        <img src="favicon.png" class="rotate" id="rotate">
     </div>
     <div class="shadow"></div>
     <h3 style="margin: 16px;text-align: center;" id="timer"></h3>
     <p style="margin: 16px;text-align: center;">Made by Burger Studio.</p>
+    <button class="button" id="switchModeBtn">切换为手动</button>
     <audio src="Funky Town.m4a" autoplay="autoplay" loop="loop" id="music"></audio>
     <script>
-        document.documentElement.addEventListener("click", function() {
-            document.getElementById('music').play();
-        });
-        var startTime = new Date();
-
-        function freshTime() {
-            var nowTime = new Date();
-            var runTime = parseInt((nowTime.getTime() - startTime.getTime()) / 1000);
-            runD = parseInt(runTime / (24 * 60 * 60));
-            runH = parseInt(runTime / (60 * 60) % 24);
-            runM = parseInt(runTime / 60 % 60);
-            runS = parseInt(runTime % 60);
-            if (runH < 10) {
-                runH = "0" + runH;
-            }
-            if (runM < 10) {
-                runM = "0" + runM;
-            }
-            if (runS < 10) {
-                runS = "0" + runS;
-            }
-            document.getElementById("timer").innerHTML = runD + " : " + runH + " : " + runM + " : " + runS;
-        }
-        var sh;
-        sh = setInterval(freshTime, 10);
+        name = "HopWeb";
     </script>
+    <script src="rotate.js"></script>
 </body>
 
 </html>
